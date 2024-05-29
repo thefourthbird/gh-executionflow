@@ -1,10 +1,14 @@
 name: Matrix Demo
-on: push
+on:
+  push:
+    branches:
+      - main
+      - master
 jobs:
   build:
     strategy:
       matrix:
-        node-verion: [12, 14, 16]
+        node-version: [12, 14, 16]
         operating-system: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.operating-system }}
     steps:
