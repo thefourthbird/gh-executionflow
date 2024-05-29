@@ -1,9 +1,5 @@
 name: Matrix Demo
-on:
-  push:
-    branches:
-      - main
-      - master
+on: push
 jobs:
   build:
     continue-on-error: true
@@ -13,11 +9,10 @@ jobs:
         operating-system: [ubuntu-latest, windows-latest]
         include:
           - node-version: 18
-          - operating-system: ubuntu-latest
+            operating-system: ubuntu-latest
         exclude:
           - node-version: 12
-          - operating-system: windows-latest
-
+            operating-system: windows-latest
     runs-on: ${{ matrix.operating-system }}
     steps:
       - name: Get Code
@@ -25,7 +20,7 @@ jobs:
       - name: Install NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version}}
+          node-version: ${{ matrix.node-version }}
       - name: Install Dependencies
         run: npm ci
       - name: Build project
